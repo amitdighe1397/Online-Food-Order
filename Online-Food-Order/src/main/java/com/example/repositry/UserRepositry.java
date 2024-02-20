@@ -7,7 +7,5 @@ import com.example.entities.User;
 
 @Repository
 public interface UserRepositry extends JpaRepository<User, Integer> {
-	
-	
 
 }

@@ -43,7 +43,7 @@ public class UserController {
 	}
 
 	@GetMapping("/getuserbyid/{id}")
-	public ResponseEntity<UserPayloads> getById(int id) {
+	public ResponseEntity<UserPayloads> getById(@PathVariable int id) {
 
 		UserPayloads userPayloads = this.userService.getById(id);
 
@@ -51,7 +51,7 @@ public class UserController {
 
 	}
 
-	@PutMapping("updateuser/{id}")
+	@PutMapping("/updateuser/{id}")
 	public ResponseEntity<UserPayloads> putMethodName(@PathVariable int id, @RequestBody UserPayloads userPayloads) {
 
 		UserPayloads userPayloads2 = this.userService.UpdateUser(userPayloads, id);

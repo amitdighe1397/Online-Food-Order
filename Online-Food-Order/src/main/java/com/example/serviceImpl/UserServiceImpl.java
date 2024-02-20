@@ -1,5 +1,6 @@
 package com.example.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,23 +26,33 @@ public class UserServiceImpl implements UserService {
 	public UserPayloads saveUser(UserPayloads userPayloads) {
 
 		User user = this.modelMapper.map(userPayloads, User.class);
+
 		User user2 = this.userRepositry.save(user);
+
 		UserPayloads userPayloads2 = this.modelMapper.map(user2, UserPayloads.class);
 
 		return userPayloads2;
 	}
 
-	@Override  
+	@Override
 	public List<UserPayloads> getAllusers() {
+	    List<User> userList = this.userRepositry.findAll();
+	    List<UserPayloads> userPayloads = new ArrayList<>();
 
-		List<User> list = this.userRepositry.findAll();
+	    for (User user : userList) {
+	        UserPayloads userPayload = this.modelMapper.map(user, UserPayloads.class);
+	        userPayloads.add(userPayload);
+	    }
 
-		List<UserPayloads> list2 = list.stream().map(user -> modelMapper.map(list, UserPayloads.class))
-				.collect(Collectors.toList());
-
-		return list2;
+	    return userPayloads;
 	}
-
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public UserPayloads getById(int id) {
 
@@ -53,7 +64,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserPayloads UpdateUser(UserPayloads userPayloads, int id) {
 		User user = this.userRepositry.findById(id).get();
-		user.setUserId(userPayloads.getUserId());
 		user.setUsername(userPayloads.getUsername());
 		user.setPhone_Number(userPayloads.getPhone_Number());
 		user.setAddress(userPayloads.getAddress());
