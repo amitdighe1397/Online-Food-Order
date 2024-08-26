@@ -47,20 +47,12 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-           image: amitdighe/online-food-ordering-system
-           tags: latest
-           registry: docker.io
-           dockerfile: Dockerfile
-           username: ${{ secrets.DOCKER_USERNAME }}
-           password: ${{ secrets.DOCKER_PASSWORD }}
+          image: amitdighe/online-food-ordering-system
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-            #- name: Deploy to Server
-            # env:
-            #  SERVER_USER: ${{ secrets.SERVER_USER }}
-            # SERVER_HOST: ${{ secrets.SERVER_HOST }}
-            # SERVER_PORT: ${{ secrets.SERVER_PORT }}
-          # DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
-          # run: |
-          #  scp -P $SERVER_PORT target/myapp.jar $SERVER_USER@$SERVER_HOST:$DEPLOY_DIR/
-          # ssh -p $SERVER_PORT $SERVER_USER@$SERVER_HOST "java -jar $DEPLOY_DIR/myapp.jar"
-
+      - name: Verify Docker image
+        run: docker images
