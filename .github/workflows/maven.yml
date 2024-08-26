@@ -23,8 +23,7 @@ jobs:
         cache: maven
 
     - name: Build with Maven
-      run: |
-        cd https://github.com/amitdighe1397/Online-Food-Order-System/blob/69fbe0c088a6fae0a1c60a3955b8974911a52e5e/Online-Food-Order/pom.xml
+      run: cd Online-Food-Order/pom.xml
         mvn clean install
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
