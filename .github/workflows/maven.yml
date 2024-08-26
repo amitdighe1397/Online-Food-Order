@@ -22,8 +22,8 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd /home/runner/work/Online-Food-Order-System/Online-Food-Order-System
-        mvn clean install
+        cd Online-Food-Order  # Navigate to the directory where pom.xml is located
+        mvn clean install    # Run Maven in the correct directory
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
