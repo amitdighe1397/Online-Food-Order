@@ -25,18 +25,16 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '17' # Change to the appropriate JDK version
+        java-version: '17' # Set to the appropriate JDK version
 
     - name: Build with Maven
       run: mvn clean install
-      working-directory: ./Online-Food-Order/pom.xml  # Update this path if your pom.xml is in a subdirectory
+      working-directory: ./Online-Food-Order # Update this path to your project directory
 
     - name: Run tests
       run: mvn test
-      working-directory: ./Online-Food-Order/pom.xml  # Update this path if needed
+      working-directory: ./Online-Food-Order # Update this path to your project directory
 
-    - name: Build with Maven
-      run: mvn clean package
-      working-directory: ./Online-Food-Order/pom.xml # Update this path if your pom.xml is in a subdirectory
-
-   
+    - name: Package with Maven
+      run: mvn package
+      working-directory: ./Online-Food-Order # Update this path to your project directory
