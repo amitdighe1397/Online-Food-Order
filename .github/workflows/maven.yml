@@ -14,8 +14,8 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE: mydatabase
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: swiggy
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s
@@ -37,5 +37,6 @@ jobs:
         DB_NAME: swiggy
         DB_USER: root
         DB_PASSWORD: root
-      run: |
+      run: | 
+        cd Online-Food-Order
         mvn clean install
