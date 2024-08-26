@@ -1,0 +1,4 @@
+FROM openjdk:8
+EXPOSE 8080
+ADD target/online-food-ordering-system-images-new.jar
+ENTRYPOINT ["java","-jar", "/system-images-new.jar"]
