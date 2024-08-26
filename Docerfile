@@ -1,4 +1,11 @@
+# Use OpenJDK 8 base image
 FROM openjdk:8
+
+# Expose port 8080
 EXPOSE 8080
-ADD target/online-food-ordering-system-images-new.jar
-ENTRYPOINT ["java","-jar", "/system-images-new.jar"]
+
+# Copy the JAR file into the container
+COPY target/online-food-ordering-system-images-new.jar /app/online-food-ordering-system-images-new.jar
+
+# Define the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "/app/online-food-ordering-system-images-new.jar"]
